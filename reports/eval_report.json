@@ -1,0 +1,252 @@
+[
+  {
+    "id": "Q01",
+    "question": "How many unique orders were placed in 2025?",
+    "expected": "ANSWER",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 1500,
+    "expected_answer": 1500
+  },
+  {
+    "id": "Q02",
+    "question": "How many unique orders were placed in March 2025?",
+    "expected": "ANSWER",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 177,
+    "expected_answer": 177
+  },
+  {
+    "id": "Q03",
+    "question": "What was net revenue in March 2025?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 103509.65,
+    "expected_answer": 103509.65
+  },
+  {
+    "id": "Q04",
+    "question": "What was total revenue for Q3 2025?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 317410.08,
+    "expected_answer": 317410.08
+  },
+  {
+    "id": "Q05",
+    "question": "What was total revenue for Q2 2025?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 292343.13,
+    "expected_answer": 292343.13
+  },
+  {
+    "id": "Q06",
+    "question": "Who are the top 5 customers by net spend?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": {
+      "C0103": 10510.6,
+      "C0197": 9266.77,
+      "C0043": 9219.89,
+      "C0017": 8882.34,
+      "C0026": 8699.4
+    },
+    "expected_answer": {
+      "C0103": 10510.6,
+      "C0197": 9266.77,
+      "C0043": 9219.89,
+      "C0017": 8882.34,
+      "C0026": 8699.4
+    }
+  },
+  {
+    "id": "Q07",
+    "question": "What was Q2 2025 revenue by product category?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": {
+      "Home": 81892.14,
+      "Fashion": 72703.21,
+      "Electronics": 70459.54,
+      "Sports": 31620.2,
+      "Beauty": 27543.9,
+      "Unknown": 8124.14
+    },
+    "expected_answer": {
+      "Beauty": 27543.9,
+      "Electronics": 70459.54,
+      "Fashion": 72703.21,
+      "Home": 81892.14,
+      "Sports": 31620.2,
+      "Unknown": 8124.14
+    }
+  },
+  {
+    "id": "Q08",
+    "question": "How many distinct customers placed an order?",
+    "expected": "ANSWER",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 200,
+    "expected_answer": 200
+  },
+  {
+    "id": "Q09",
+    "question": "What is the average order value?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 743.08,
+    "expected_answer": 743.08
+  },
+  {
+    "id": "Q10",
+    "question": "What percentage of units sold were returned?",
+    "expected": "ANSWER",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 0.71,
+    "expected_answer": 0.71
+  },
+  {
+    "id": "Q11",
+    "question": "Which country placed the most orders?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": "IN",
+    "expected_answer": "IN"
+  },
+  {
+    "id": "Q12",
+    "question": "How many orders reference a customer that does not exist?",
+    "expected": "ANSWER",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 15,
+    "expected_answer": 15
+  },
+  {
+    "id": "Q13",
+    "question": "What was the revenue on 04/05/2025?",
+    "expected": "CLARIFY",
+    "got": "CLARIFY",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": null,
+    "expected_answer": null
+  },
+  {
+    "id": "Q14",
+    "question": "What was total revenue?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": 906558.14,
+    "expected_answer": 906558.14
+  },
+  {
+    "id": "Q15",
+    "question": "Why did sales drop in June compared to May?",
+    "expected": "ANSWER_WITH_ASSUMPTIONS",
+    "got": "ANSWER_WITH_ASSUMPTIONS",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": {
+      "may": 90494.18,
+      "june": 94028.75,
+      "premise_true": false
+    },
+    "expected_answer": {
+      "may": 90494.18,
+      "june": 94028.75,
+      "premise_true": false
+    }
+  },
+  {
+    "id": "Q16",
+    "question": "What was revenue in Q4 2025?",
+    "expected": "REFUSE",
+    "got": "REFUSE",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": null,
+    "expected_answer": null
+  },
+  {
+    "id": "Q17",
+    "question": "What is the average delivery time by city?",
+    "expected": "REFUSE",
+    "got": "REFUSE",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": null,
+    "expected_answer": null
+  },
+  {
+    "id": "Q18",
+    "question": "What is our profit margin?",
+    "expected": "REFUSE",
+    "got": "REFUSE",
+    "decision_ok": true,
+    "value_ok": true,
+    "reproducible": true,
+    "pass": true,
+    "agent_answer": null,
+    "expected_answer": null
+  }
+]

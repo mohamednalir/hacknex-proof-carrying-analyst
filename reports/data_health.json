@@ -1,0 +1,100 @@
+[
+  {
+    "table": "customers",
+    "issue": "duplicate customers under different ID formats",
+    "count": 10,
+    "detail": "e.g. c-0005 and C0005; emails differ only by case",
+    "fix": "merge on ID ignoring case and hyphens"
+  },
+  {
+    "table": "customers",
+    "issue": "missing country",
+    "count": 10,
+    "detail": "country is blank",
+    "fix": "exclude from country breakdowns"
+  },
+  {
+    "table": "products",
+    "issue": "missing category",
+    "count": 2,
+    "detail": "category is blank",
+    "fix": "report as Unknown"
+  },
+  {
+    "table": "orders",
+    "issue": "exact duplicate rows",
+    "count": 40,
+    "detail": "same order logged twice",
+    "fix": "drop duplicates before counting"
+  },
+  {
+    "table": "orders",
+    "issue": "status spelled several ways",
+    "count": 8,
+    "detail": "spellings: CANCELLED, Cancelled, DELIVERED, Delivered, PENDING, Pending ...",
+    "fix": "lower-case and trim"
+  },
+  {
+    "table": "orders",
+    "issue": "three different date formats",
+    "count": 1,
+    "detail": "777 ISO, 358 'DD Mon YY', 405 NN/NN/YYYY",
+    "fix": "parse each format separately"
+  },
+  {
+    "table": "orders",
+    "issue": "ambiguous slash dates (both parts <= 12)",
+    "count": 141,
+    "detail": "257 slash dates have a first part above 12, which proves DD/MM/YYYY",
+    "fix": "read as day-first; flag any user question that uses an ambiguous date"
+  },
+  {
+    "table": "orders",
+    "issue": "orders for customers that do not exist",
+    "count": 15,
+    "detail": "customer_id not in customers.csv",
+    "fix": "keep in revenue, exclude from customer-level figures"
+  },
+  {
+    "table": "orders",
+    "issue": "currencies mixed",
+    "count": 2,
+    "detail": "currencies: EUR, INR, USD",
+    "fix": "convert to USD with fx_rates.csv"
+  },
+  {
+    "table": "order_items",
+    "issue": "discount stored on two scales",
+    "count": 669,
+    "detail": "fractions (0.10) mixed with whole percentages (10)",
+    "fix": "divide values above 1 by 100"
+  },
+  {
+    "table": "order_items",
+    "issue": "negative quantities (returns)",
+    "count": 63,
+    "detail": "return lines inside the sales table",
+    "fix": "let them reduce revenue; use for return rate"
+  },
+  {
+    "table": "order_items",
+    "issue": "unit price disagrees with products list price",
+    "count": 15,
+    "detail": "more than 3% apart after currency conversion",
+    "fix": "use the price actually charged (order line)"
+  },
+  {
+    "table": "orders",
+    "issue": "total_amount disagrees with sum of order lines",
+    "count": 34,
+    "detail": "header total differs from line items by more than 0.5",
+    "fix": "ignore total_amount, use order lines"
+  },
+  {
+    "table": "finance_report.txt",
+    "issue": "report contradicts the tables (Q3)",
+    "count": 1,
+    "detail": "report says USD 355,000, tables give USD 317,410",
+    "fix": "trust the tables, flag the conflict in answers"
+  }
+]

@@ -1,0 +1,171 @@
+[
+  {
+    "id": "Q01",
+    "question": "How many unique orders were placed in 2025?",
+    "expected_behavior": "ANSWER",
+    "expected_answer": 1500,
+    "traps": [
+      "exact duplicate order rows"
+    ]
+  },
+  {
+    "id": "Q02",
+    "question": "How many unique orders were placed in March 2025?",
+    "expected_behavior": "ANSWER",
+    "expected_answer": 177,
+    "traps": [
+      "duplicate rows",
+      "mixed date formats"
+    ]
+  },
+  {
+    "id": "Q03",
+    "question": "What was net revenue in March 2025?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": 103509.65,
+    "unit": "USD",
+    "traps": [
+      "mixed currencies",
+      "duplicates",
+      "status casing",
+      "discount scale",
+      "returns"
+    ]
+  },
+  {
+    "id": "Q04",
+    "question": "What was total revenue for Q3 2025?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": 317410.08,
+    "unit": "USD",
+    "notes": "finance_report.txt states a different Q3 figure; agent must flag the contradiction",
+    "traps": [
+      "table vs document contradiction"
+    ]
+  },
+  {
+    "id": "Q05",
+    "question": "What was total revenue for Q2 2025?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": 292343.13,
+    "unit": "USD",
+    "notes": "finance_report.txt agrees with this one (rounded)"
+  },
+  {
+    "id": "Q06",
+    "question": "Who are the top 5 customers by net spend?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": {
+      "C0103": 10510.6,
+      "C0197": 9266.77,
+      "C0043": 9219.89,
+      "C0017": 8882.34,
+      "C0026": 8699.4
+    },
+    "unit": "USD",
+    "notes": "must merge c-XXXX with CXXXX; orphan orders excluded",
+    "traps": [
+      "duplicate customers",
+      "orphan orders"
+    ]
+  },
+  {
+    "id": "Q07",
+    "question": "What was Q2 2025 revenue by product category?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": {
+      "Beauty": 27543.9,
+      "Electronics": 70459.54,
+      "Fashion": 72703.21,
+      "Home": 81892.14,
+      "Sports": 31620.2,
+      "Unknown": 8124.14
+    },
+    "unit": "USD",
+    "notes": "null category reported as Unknown",
+    "traps": [
+      "null category"
+    ]
+  },
+  {
+    "id": "Q08",
+    "question": "How many distinct customers placed an order?",
+    "expected_behavior": "ANSWER",
+    "expected_answer": 200,
+    "notes": "after merging duplicate IDs, orphan orders excluded"
+  },
+  {
+    "id": "Q09",
+    "question": "What is the average order value?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": 743.08,
+    "unit": "USD",
+    "notes": "delivered and shipped orders, net of returns"
+  },
+  {
+    "id": "Q10",
+    "question": "What percentage of units sold were returned?",
+    "expected_behavior": "ANSWER",
+    "expected_answer": 0.71,
+    "unit": "percent"
+  },
+  {
+    "id": "Q11",
+    "question": "Which country placed the most orders?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": "IN",
+    "notes": "orders with unknown or missing country are excluded"
+  },
+  {
+    "id": "Q12",
+    "question": "How many orders reference a customer that does not exist?",
+    "expected_behavior": "ANSWER",
+    "expected_answer": 15
+  },
+  {
+    "id": "Q13",
+    "question": "What was the revenue on 04/05/2025?",
+    "expected_behavior": "CLARIFY",
+    "notes": "04/05 could be 4 May or 5 April; agent should ask or state its assumption explicitly"
+  },
+  {
+    "id": "Q14",
+    "question": "What was total revenue?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": 906558.14,
+    "unit": "USD",
+    "notes": "must state currency and period assumptions"
+  },
+  {
+    "id": "Q15",
+    "question": "Why did sales drop in June compared to May?",
+    "expected_behavior": "ANSWER_WITH_ASSUMPTIONS",
+    "expected_answer": {
+      "may": 90494.18,
+      "june": 94028.75,
+      "premise_true": false
+    },
+    "notes": "must check the premise first; data cannot explain causes either way",
+    "traps": [
+      "false premise"
+    ]
+  },
+  {
+    "id": "Q16",
+    "question": "What was revenue in Q4 2025?",
+    "expected_behavior": "REFUSE",
+    "notes": "data ends 2025-09-30"
+  },
+  {
+    "id": "Q17",
+    "question": "What is the average delivery time by city?",
+    "expected_behavior": "REFUSE",
+    "notes": "no delivery date or city columns exist"
+  },
+  {
+    "id": "Q18",
+    "question": "What is our profit margin?",
+    "expected_behavior": "REFUSE",
+    "notes": "no cost data exists"
+  }
+]

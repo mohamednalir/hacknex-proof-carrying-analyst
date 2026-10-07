@@ -1,0 +1,18 @@
+{
+  "duplicate_customers": 10,
+  "customers_missing_country": 10,
+  "products_null_category": 2,
+  "order_date_formats": {
+    "iso": 757,
+    "d_mon_yy": 347,
+    "slash_dmy": 396
+  },
+  "orphan_orders": 15,
+  "orders_total_mismatch": 20,
+  "exact_duplicate_order_rows": 40,
+  "discounts_stored_as_percent": 669,
+  "return_lines_negative_qty": 63,
+  "items_price_disagrees_with_products": 15,
+  "finance_report_q3_stated": 355000,
+  "finance_report_q3_true": 317410.08
+}

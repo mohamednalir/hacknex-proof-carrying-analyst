@@ -1,0 +1,1149 @@
+{
+  "Q01": {
+    "id": "Q01",
+    "question": "How many unique orders were placed in 2025?",
+    "mode": "rules",
+    "script": "answers/Q01.py",
+    "runtime_s": 0.82,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 1500,
+    "unit": "orders",
+    "summary": "1,500 unique orders (all statuses) in 2025.",
+    "assumptions": [
+      "The data ends on 2025-09-30, so only days up to then are included.",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings)."
+    ],
+    "confidence": 0.93,
+    "evidence": {
+      "orders_used": 1500
+    },
+    "extra": {
+      "period": "2025"
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q02": {
+    "id": "Q02",
+    "question": "How many unique orders were placed in March 2025?",
+    "mode": "rules",
+    "script": "answers/Q02.py",
+    "runtime_s": 0.78,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 177,
+    "unit": "orders",
+    "summary": "177 unique orders (all statuses) in March 2025.",
+    "assumptions": [
+      "Removed 40 exact duplicate order rows before counting.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings)."
+    ],
+    "confidence": 0.94,
+    "evidence": {
+      "orders_used": 177
+    },
+    "extra": {
+      "period": "March 2025"
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q03": {
+    "id": "Q03",
+    "question": "What was net revenue in March 2025?",
+    "mode": "rules",
+    "script": "answers/Q03.py",
+    "runtime_s": 0.82,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 103509.65,
+    "unit": "USD",
+    "summary": "Net revenue for March 2025 is USD 103,509.65.",
+    "assumptions": [
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "15 orders reference customer IDs missing from customers.csv; they still count in revenue because the sale happened."
+    ],
+    "confidence": 0.89,
+    "evidence": {
+      "order_lines_used": 355,
+      "orders_used": 146
+    },
+    "extra": {
+      "period": "March 2025",
+      "cross_document": null
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q04": {
+    "id": "Q04",
+    "question": "What was total revenue for Q3 2025?",
+    "mode": "rules",
+    "script": "answers/Q04.py",
+    "runtime_s": 0.89,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 317410.08,
+    "unit": "USD",
+    "summary": "Net revenue for Q3 2025 is USD 317,410.08.",
+    "assumptions": [
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "15 orders reference customer IDs missing from customers.csv; they still count in revenue because the sale happened.",
+      "CONFLICT: finance_report.txt says USD 355,000 for Q3 2025 but the order tables give USD 317,410.08 (report is +11.8% off). The tables were used because they can be recomputed line by line; the report figure cannot be reproduced."
+    ],
+    "confidence": 0.74,
+    "evidence": {
+      "order_lines_used": 1068,
+      "orders_used": 435
+    },
+    "extra": {
+      "period": "Q3 2025",
+      "cross_document": {
+        "report_value": 355000.0,
+        "table_value": 317410.08,
+        "difference_pct": 11.84,
+        "consistent": false,
+        "message": "CONFLICT: finance_report.txt says USD 355,000 for Q3 2025 but the order tables give USD 317,410.08 (report is +11.8% off). The tables were used because they can be recomputed line by line; the report figure cannot be reproduced."
+      }
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q05": {
+    "id": "Q05",
+    "question": "What was total revenue for Q2 2025?",
+    "mode": "rules",
+    "script": "answers/Q05.py",
+    "runtime_s": 0.79,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 292343.13,
+    "unit": "USD",
+    "summary": "Net revenue for Q2 2025 is USD 292,343.13.",
+    "assumptions": [
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "15 orders reference customer IDs missing from customers.csv; they still count in revenue because the sale happened.",
+      "finance_report.txt says USD 292,000 for Q2 2025, consistent with the tables (within 2%)."
+    ],
+    "confidence": 0.89,
+    "evidence": {
+      "order_lines_used": 952,
+      "orders_used": 380
+    },
+    "extra": {
+      "period": "Q2 2025",
+      "cross_document": {
+        "report_value": 292000.0,
+        "table_value": 292343.13,
+        "difference_pct": -0.12,
+        "consistent": true,
+        "message": "finance_report.txt says USD 292,000 for Q2 2025, consistent with the tables (within 2%)."
+      }
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q06": {
+    "id": "Q06",
+    "question": "Who are the top 5 customers by net spend?",
+    "mode": "rules",
+    "script": "answers/Q06.py",
+    "runtime_s": 0.81,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": {
+      "C0103": 10510.6,
+      "C0197": 9266.77,
+      "C0043": 9219.89,
+      "C0017": 8882.34,
+      "C0026": 8699.4
+    },
+    "unit": "USD",
+    "summary": "Top 5 customers by net spend in the whole dataset (2025-01-01 to 2025-09-30): C0103 (Priya Martin) USD 10,510.60; C0197 (Maya Sharma) USD 9,266.77; C0043 (Emma Sharma) USD 9,219.89; C0017 (Oliver Patel) USD 8,882.34; C0026 (Kabir Müller) USD 8,699.40.",
+    "assumptions": [
+      "No period was given, so the whole dataset (2025-01-01 to 2025-09-30) was used.",
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Merged 10 duplicate customer IDs (IDs are compared ignoring case and hyphens, so c-0005 and C0005 are one customer).",
+      "15 orders reference customer IDs missing from customers.csv and are excluded from customer-level figures.",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12."
+    ],
+    "confidence": 0.89,
+    "evidence": {
+      "order_lines_used": 2993,
+      "customers_ranked": 200
+    },
+    "extra": {
+      "names": {
+        "C0103": "Priya Martin",
+        "C0197": "Maya Sharma",
+        "C0043": "Emma Sharma",
+        "C0017": "Oliver Patel",
+        "C0026": "Kabir Müller"
+      },
+      "period": "the whole dataset (2025-01-01 to 2025-09-30)"
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q07": {
+    "id": "Q07",
+    "question": "What was Q2 2025 revenue by product category?",
+    "mode": "rules",
+    "script": "answers/Q07.py",
+    "runtime_s": 0.75,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": {
+      "Home": 81892.14,
+      "Fashion": 72703.21,
+      "Electronics": 70459.54,
+      "Sports": 31620.2,
+      "Beauty": 27543.9,
+      "Unknown": 8124.14
+    },
+    "unit": "USD",
+    "summary": "Net revenue by product category for Q2 2025 (total USD 292,343.13): Home USD 81,892.14; Fashion USD 72,703.21; Electronics USD 70,459.54; Sports USD 31,620.20; Beauty USD 27,543.90; Unknown USD 8,124.14.",
+    "assumptions": [
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "2 products have no category and are reported as Unknown."
+    ],
+    "confidence": 0.89,
+    "evidence": {
+      "order_lines_used": 952,
+      "orders_used": 380
+    },
+    "extra": {
+      "period": "Q2 2025",
+      "total_usd": 292343.13
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q08": {
+    "id": "Q08",
+    "question": "How many distinct customers placed an order?",
+    "mode": "rules",
+    "script": "answers/Q08.py",
+    "runtime_s": 0.73,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 200,
+    "unit": "customers",
+    "summary": "200 distinct customers placed at least one order in the whole dataset (2025-01-01 to 2025-09-30).",
+    "assumptions": [
+      "No period was given, so the whole dataset (2025-01-01 to 2025-09-30) was used.",
+      "Merged 10 duplicate customer IDs (IDs are compared ignoring case and hyphens, so c-0005 and C0005 are one customer).",
+      "15 orders reference customer IDs missing from customers.csv and are excluded from customer-level figures.",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12."
+    ],
+    "confidence": 0.92,
+    "evidence": {
+      "orders_used": 1485
+    },
+    "extra": {
+      "period": "the whole dataset (2025-01-01 to 2025-09-30)"
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q09": {
+    "id": "Q09",
+    "question": "What is the average order value?",
+    "mode": "rules",
+    "script": "answers/Q09.py",
+    "runtime_s": 0.74,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 743.08,
+    "unit": "USD",
+    "summary": "Average order value for the whole dataset (2025-01-01 to 2025-09-30) is USD 743.08 over 1220 delivered or shipped orders.",
+    "assumptions": [
+      "No period was given, so the whole dataset (2025-01-01 to 2025-09-30) was used.",
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "15 orders reference customer IDs missing from customers.csv; they still count in revenue because the sale happened."
+    ],
+    "confidence": 0.88,
+    "evidence": {
+      "orders_used": 1220,
+      "order_lines_used": 3020
+    },
+    "extra": {
+      "period": "the whole dataset (2025-01-01 to 2025-09-30)"
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q10": {
+    "id": "Q10",
+    "question": "What percentage of units sold were returned?",
+    "mode": "rules",
+    "script": "answers/Q10.py",
+    "runtime_s": 0.69,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 0.71,
+    "unit": "percent",
+    "summary": "63 units were returned out of 8,822 sold in the whole dataset (2025-01-01 to 2025-09-30), a return rate of 0.71%.",
+    "assumptions": [
+      "No period was given, so the whole dataset (2025-01-01 to 2025-09-30) was used.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12."
+    ],
+    "confidence": 0.92,
+    "evidence": {
+      "units_sold": 8822,
+      "units_returned": 63
+    },
+    "extra": {
+      "period": "the whole dataset (2025-01-01 to 2025-09-30)"
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q11": {
+    "id": "Q11",
+    "question": "Which country placed the most orders?",
+    "mode": "rules",
+    "script": "answers/Q11.py",
+    "runtime_s": 0.71,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": "IN",
+    "unit": "country",
+    "summary": "IN placed the most orders in the whole dataset (2025-01-01 to 2025-09-30) (411 of 1430 orders with a known country).",
+    "assumptions": [
+      "No period was given, so the whole dataset (2025-01-01 to 2025-09-30) was used.",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Merged 10 duplicate customer IDs (IDs are compared ignoring case and hyphens, so c-0005 and C0005 are one customer).",
+      "15 orders reference customer IDs missing from customers.csv and are excluded from customer-level figures.",
+      "Customers with no country on file are excluded from the country breakdown.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12."
+    ],
+    "confidence": 0.91,
+    "evidence": {
+      "orders_by_country": {
+        "IN": 411,
+        "US": 362,
+        "FR": 345,
+        "DE": 312
+      },
+      "orders_without_country": 70
+    },
+    "extra": {
+      "period": "the whole dataset (2025-01-01 to 2025-09-30)"
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q12": {
+    "id": "Q12",
+    "question": "How many orders reference a customer that does not exist?",
+    "mode": "rules",
+    "script": "answers/Q12.py",
+    "runtime_s": 0.72,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 15,
+    "unit": "orders",
+    "summary": "15 orders reference a customer ID that does not exist in customers.csv.",
+    "assumptions": [
+      "Removed 40 exact duplicate order rows before counting.",
+      "Merged 10 duplicate customer IDs (IDs are compared ignoring case and hyphens, so c-0005 and C0005 are one customer)."
+    ],
+    "confidence": 0.95,
+    "evidence": {
+      "example_order_ids": [
+        "ORD-00360",
+        "ORD-00903",
+        "ORD-01187",
+        "ORD-00069",
+        "ORD-01324"
+      ],
+      "example_customer_ids": [
+        "C9426",
+        "C9391",
+        "C9269",
+        "C9577",
+        "C9371"
+      ]
+    },
+    "extra": {},
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q13": {
+    "id": "Q13",
+    "question": "What was the revenue on 04/05/2025?",
+    "mode": "rules",
+    "script": "answers/Q13.py",
+    "runtime_s": 0.73,
+    "decision": "CLARIFY",
+    "answer": null,
+    "reason": "The date 04/05/2025 can be read two ways. Do you mean 4 May (day/month) or 5 April (month/day)? I will not guess, because the answer differs between the two.",
+    "follow_up_question": "Do you mean 4 May (day/month) or 5 April (month/day)? I will not guess, because the answer differs between the two.",
+    "summary": "The date 04/05/2025 can be read two ways. Do you mean 4 May (day/month) or 5 April (month/day)? I will not guess, because the answer differs between the two.",
+    "assumptions": [],
+    "confidence": 0.9,
+    "evidence": {
+      "data_range": [
+        "2025-01-01",
+        "2025-09-30"
+      ],
+      "tables_and_columns": {
+        "customers": [
+          "customer_id",
+          "name",
+          "email",
+          "country",
+          "signup_date"
+        ],
+        "products": [
+          "product_id",
+          "name",
+          "category",
+          "list_price",
+          "price_currency"
+        ],
+        "orders": [
+          "order_id",
+          "customer_id",
+          "status",
+          "total_amount",
+          "currency",
+          "payment_method",
+          "date",
+          "orphan"
+        ],
+        "order_items": [
+          "order_id",
+          "product_id",
+          "quantity",
+          "unit_price",
+          "discount",
+          "discount_raw",
+          "customer_id",
+          "date",
+          "status",
+          "currency",
+          "orphan",
+          "fx",
+          "usd",
+          "category"
+        ]
+      }
+    },
+    "extra": {},
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q14": {
+    "id": "Q14",
+    "question": "What was total revenue?",
+    "mode": "rules",
+    "script": "answers/Q14.py",
+    "runtime_s": 0.75,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 906558.14,
+    "unit": "USD",
+    "summary": "Net revenue for the whole dataset (2025-01-01 to 2025-09-30) is USD 906,558.14.",
+    "assumptions": [
+      "No period was given, so the whole dataset (2025-01-01 to 2025-09-30) was used.",
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "15 orders reference customer IDs missing from customers.csv; they still count in revenue because the sale happened."
+    ],
+    "confidence": 0.88,
+    "evidence": {
+      "order_lines_used": 3020,
+      "orders_used": 1220
+    },
+    "extra": {
+      "period": "the whole dataset (2025-01-01 to 2025-09-30)",
+      "cross_document": null
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q15": {
+    "id": "Q15",
+    "question": "Why did sales drop in June compared to May?",
+    "mode": "rules",
+    "script": "answers/Q15.py",
+    "runtime_s": 0.75,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": {
+      "may": 90494.18,
+      "june": 94028.75,
+      "premise_true": false
+    },
+    "unit": "USD",
+    "summary": "The premise is not supported: June revenue (USD 94,028.75) was 3.9% higher than May (USD 90,494.18), so there was no drop. ",
+    "assumptions": [
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "Transaction data can show what changed but not why; the category changes below are supporting evidence, not proven causes."
+    ],
+    "confidence": 0.89,
+    "evidence": {
+      "order_lines_used": 620
+    },
+    "extra": {
+      "change_pct": 3.91,
+      "category_change_usd": {
+        "Electronics": -6384.3,
+        "Beauty": -3317.17,
+        "Fashion": -1487.63,
+        "Unknown": -502.75,
+        "Sports": 1706.16,
+        "Home": 13520.25
+      }
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q16": {
+    "id": "Q16",
+    "question": "What was revenue in Q4 2025?",
+    "mode": "rules",
+    "script": "answers/Q16.py",
+    "runtime_s": 0.71,
+    "decision": "REFUSE",
+    "answer": null,
+    "reason": "No data for Q4 2025. The data only covers 2025-01-01 to 2025-09-30.",
+    "follow_up_question": null,
+    "summary": "No data for Q4 2025. The data only covers 2025-01-01 to 2025-09-30.",
+    "assumptions": [],
+    "confidence": 0.9,
+    "evidence": {
+      "data_range": [
+        "2025-01-01",
+        "2025-09-30"
+      ],
+      "tables_and_columns": {
+        "customers": [
+          "customer_id",
+          "name",
+          "email",
+          "country",
+          "signup_date"
+        ],
+        "products": [
+          "product_id",
+          "name",
+          "category",
+          "list_price",
+          "price_currency"
+        ],
+        "orders": [
+          "order_id",
+          "customer_id",
+          "status",
+          "total_amount",
+          "currency",
+          "payment_method",
+          "date",
+          "orphan"
+        ],
+        "order_items": [
+          "order_id",
+          "product_id",
+          "quantity",
+          "unit_price",
+          "discount",
+          "discount_raw",
+          "customer_id",
+          "date",
+          "status",
+          "currency",
+          "orphan",
+          "fx",
+          "usd",
+          "category"
+        ]
+      }
+    },
+    "extra": {},
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q17": {
+    "id": "Q17",
+    "question": "What is the average delivery time by city?",
+    "mode": "rules",
+    "script": "answers/Q17.py",
+    "runtime_s": 0.71,
+    "decision": "REFUSE",
+    "answer": null,
+    "reason": "This cannot be answered from the data: there is no delivery or shipping dates (orders only have an order date and a status).",
+    "follow_up_question": null,
+    "summary": "This cannot be answered from the data: there is no delivery or shipping dates (orders only have an order date and a status).",
+    "assumptions": [],
+    "confidence": 0.9,
+    "evidence": {
+      "data_range": [
+        "2025-01-01",
+        "2025-09-30"
+      ],
+      "tables_and_columns": {
+        "customers": [
+          "customer_id",
+          "name",
+          "email",
+          "country",
+          "signup_date"
+        ],
+        "products": [
+          "product_id",
+          "name",
+          "category",
+          "list_price",
+          "price_currency"
+        ],
+        "orders": [
+          "order_id",
+          "customer_id",
+          "status",
+          "total_amount",
+          "currency",
+          "payment_method",
+          "date",
+          "orphan"
+        ],
+        "order_items": [
+          "order_id",
+          "product_id",
+          "quantity",
+          "unit_price",
+          "discount",
+          "discount_raw",
+          "customer_id",
+          "date",
+          "status",
+          "currency",
+          "orphan",
+          "fx",
+          "usd",
+          "category"
+        ]
+      }
+    },
+    "extra": {},
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "Q18": {
+    "id": "Q18",
+    "question": "What is our profit margin?",
+    "mode": "rules",
+    "script": "answers/Q18.py",
+    "runtime_s": 0.71,
+    "decision": "REFUSE",
+    "answer": null,
+    "reason": "This cannot be answered from the data: there is no cost data (there are no cost, COGS or expense columns).",
+    "follow_up_question": null,
+    "summary": "This cannot be answered from the data: there is no cost data (there are no cost, COGS or expense columns).",
+    "assumptions": [],
+    "confidence": 0.9,
+    "evidence": {
+      "data_range": [
+        "2025-01-01",
+        "2025-09-30"
+      ],
+      "tables_and_columns": {
+        "customers": [
+          "customer_id",
+          "name",
+          "email",
+          "country",
+          "signup_date"
+        ],
+        "products": [
+          "product_id",
+          "name",
+          "category",
+          "list_price",
+          "price_currency"
+        ],
+        "orders": [
+          "order_id",
+          "customer_id",
+          "status",
+          "total_amount",
+          "currency",
+          "payment_method",
+          "date",
+          "orphan"
+        ],
+        "order_items": [
+          "order_id",
+          "product_id",
+          "quantity",
+          "unit_price",
+          "discount",
+          "discount_raw",
+          "customer_id",
+          "date",
+          "status",
+          "currency",
+          "orphan",
+          "fx",
+          "usd",
+          "category"
+        ]
+      }
+    },
+    "extra": {},
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  },
+  "A8a29671d": {
+    "id": "A8a29671d",
+    "question": "What was net revenue in March 2025?",
+    "mode": "rules",
+    "script": "answers/A8a29671d.py",
+    "runtime_s": 0.94,
+    "decision": "ANSWER_WITH_ASSUMPTIONS",
+    "answer": 103509.65,
+    "unit": "USD",
+    "summary": "Net revenue for March 2025 is USD 103,509.65.",
+    "assumptions": [
+      "Net revenue = quantity x unit_price x (1 - discount) from order_items, for delivered and shipped orders only; cancelled and pending orders are excluded.",
+      "63 lines with negative quantity are returns and reduce revenue.",
+      "Converted non-USD amounts to USD using fx_rates.csv (1 EUR = 1.08 USD, 1 INR = 0.012 USD).",
+      "Removed 40 exact duplicate order rows before counting.",
+      "Status values differing only by case or spacing were normalised (12 raw spellings).",
+      "669 order lines store the discount as a whole percentage (e.g. 10) instead of a fraction (0.10); values above 1 were divided by 100.",
+      "Slash dates in the order file (e.g. 04/05/2025) are read as DD/MM/YYYY because some values have a first part above 12 (e.g. 27/03/2025) and none have a second part above 12.",
+      "15 orders reference customer IDs missing from customers.csv; they still count in revenue because the sale happened."
+    ],
+    "confidence": 0.89,
+    "evidence": {
+      "order_lines_used": 355,
+      "orders_used": 146
+    },
+    "extra": {
+      "period": "March 2025",
+      "cross_document": null
+    },
+    "data_quality": {
+      "customer_rows_raw": 210,
+      "duplicate_customer_ids_merged": 10,
+      "customers_missing_country": 9,
+      "products_without_category": 2,
+      "order_rows_raw": 1540,
+      "status_spellings_raw": 12,
+      "exact_duplicate_order_rows_removed": 40,
+      "conflicting_duplicate_order_ids_removed": 0,
+      "date_formats_found": {
+        "YYYY-MM-DD": 757,
+        "DD Mon YY": 347,
+        "NN/NN/YYYY": 396
+      },
+      "unparseable_dates": 0,
+      "orders_with_unknown_customer": 15,
+      "discounts_rescaled_from_percent": 669,
+      "return_lines": 63,
+      "order_lines_without_order_removed": 0,
+      "orders_total_amount_mismatch": 34
+    },
+    "reproducible": true
+  }
+}
